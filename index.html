@@ -45,7 +45,17 @@
 .js-fullheight {
   height: 100vh;
 }
+.navbar-collapse {
+  display: none; /* Ensure it is hidden by default */
+}
 
+.navbar-collapse.show {
+  display: block !important; /* Ensure it displays when toggled */
+}
+
+.navbar-toggler {
+  z-index: 1050; /* Ensure the toggle button is above other elements */
+}
 @media (max-width: 768px) {
   .js-fullheight {
     height: 10vh; /* Allow the section to adjust based on content */
@@ -725,8 +735,12 @@ if (window.innerWidth < 768) {
   elements.forEach(el => el.removeAttribute('data-scrollax-parent'));
 }
 });
-   </script>
-
+   $(document).ready(function () {
+    $('.navbar-toggler').on('click', function () {
+      $('#ftco-nav').toggleClass('show');
+    });
+  });
+</script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
